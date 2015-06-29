@@ -55,7 +55,7 @@ def main():
 	#upload(device_name,serial_port)
 	
 	waterSystem = water(serial_port)
-	waterSystem.runCommand("rm log")	# Clear log
+	runCommand("rm log")	# Clear log
 	waterSystem.waterIn(300)
 	quit()
 	

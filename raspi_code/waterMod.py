@@ -52,71 +52,12 @@ class water:
 		#### WAIT FOR ARDUINO ####
 		sleep(3.0)
 
-	
-
-
-	def runCommand(self,command):
-		p = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
-		(output, err) = p.communicate()
-		waterLog.log("",output)	
-		if err:
-			waterLog.log("E",output)	
-		return output
-
 	def getCurrentTimeMS(self):
 		return long(time.time()*1000)
 
 	def checkTOMS(self,k):
 		if k < self.getCurrentTimeMS():
 			waterLog.log("E","Time Out")
-
-	# def log(self, s0, s1):
-		# # s0 = "E" 			<- Log error and EXIT
-		# # s0 = "I"			<- Log and print message
-		# # s0 = ""			<- Log method
-		# # s1 = "Hej hej"	<- Message
-		# if s0 == "E":
-			# output = "ERROR: " + strftime("%d %b %Y %H:%M:%S", gmtime()) + " " + inspect.stack()[1][3] + "() " + s1 + "\n"
-			# file = open("log", "a")
-			# file.write(output)
-			# print output # Print message in terminal
-			# i = 1
-			# s = ""
-			# # trace back
-			# while inspect.stack()[i][3] != "main":
-				# s = s + "\n" + inspect.stack()[i][3] + "() "
-				# i = i + 1
-				
-			# s = s + "\n" + inspect.stack()[i][3] + "() "	
-			# print s
-			# file = open("log", "a")
-			# file.write(s)
-			# quit()	# And quit
-		# elif s0 == "I":	
-			# msg = strftime("%d %b %Y %H:%M:%S", gmtime()) + " INFO: "+ s1 + "\n"
-			# file = open("log", "a")
-			# file.write(msg)
-			# print s1
-		# else:
-			# output = strftime("%d %b %Y %H:%M:%S", gmtime()) + " " + inspect.stack()[1][3] + "() " + s1 + "\n"
-			# file = open("log", "a")
-			# file.write(output)
-		
-		
-	# def build(self,device_name): 
-		# s = "ino build -m "+device_name
-		# waterLog.log("I","Building with: "+s)
-		# if self.runCommand(s).find("failed") != -1:
-			# waterLog.log("E","FAILED!")
-		# waterLog.log("I","Build success!")		
-
-	# def upload(self,device_name,serial_port):
-		# s = "ino upload -m "+device_name+" -p "+serial_port
-		# waterLog.log("I","Uploading with: "+s)
-		# if self.runCommand(s).find("FAILED") != -1:
-			# waterLog.log("E","FAILED!")
-		# waterLog.log("I","Upload success!")	
-
 		
 	def serialReadBytes(self, cmd, n):
 		self.port.flushInput() 			# flush input buffer to avid junk
