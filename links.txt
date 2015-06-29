@@ -1,0 +1,39 @@
+Guide to install noobs:
+https://www.raspberrypi.org/help/noobs-setup/
+
+Shut down proberly:
+sudo shutdown -h now
+
+Get IP: 
+hostname -I
+10.62.64.221
+
+
+
+Wifi:
+
+
+Arduino:
+http://openenergymonitor.blogspot.dk/2013/12/developing-for-arduino-remotely-on.html
+http://inotool.org/
+
+Find seriel port:
+dmesg | grep tty
+
+Shared folder:
+http://raspberrywebserver.com/serveradmin/share-your-raspberry-pis-files-and-folders-across-a-network.html
+
+git:
+http://readwrite.com/2013/09/30/understanding-github-a-journey-for-beginners-part-1
+
+
+Prosedure/make to run in order to run "python run.py"
+sudo apt-get update
+sudo apt-get install arduino
+sudo apt-get install python-dev
+sudo apt-get install python-setuptools
+git clone git://github.com/amperka/ino.git
+cd ino
+sudo python setup.py install
+
+
