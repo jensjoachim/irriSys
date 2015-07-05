@@ -164,10 +164,11 @@ class water:
 			
 		self.servoUse(self.SERVO_MIDDLE_DEG-i)			
 		
-	def usePump(self,k):
+	def usePumpIn(self,k):
 		msg = "Value k = %i" % k
 		waterLog.log("",msg)
-		if k < 0 and k > 255:
+		#if k < 0 and k > 255:
+		if k < 0 or k > 255:
 			msg = "%i < 0 and %i > 255" % (k,k)
 			waterLog.log("E",msg)	
 
@@ -201,7 +202,7 @@ class water:
 			self.servoUp()
 			msg = "Filling bucket to: %iml" % self.WATER_BUCKET_MAX
 			waterLog.log("I",msg)
-			self.usePump(m_speed)	# Start pump
+			self.usePumpIn(m_speed)	# Start pump
 			x = 0
 			b_TO = self.WATER_FILL_BUCKET_TIME * 1000 + self.getCurrentTimeMS()# Set TO
 			while x < self.WATER_BUCKET_MAX:
@@ -209,7 +210,7 @@ class water:
 				self.checkTOMS(b_TO) # Check Time Out
 				x = self.scaleReadTrue(1)
 
-			self.usePump(0)	# Stop pump
+			self.usePumpIn(0)	# Stop pump
 			sleep(1.0)
 			filled = self.scaleReadTrue(mean_n)
 			waterLog.log("I","Setting Bucket Right")
@@ -228,7 +229,7 @@ class water:
 		self.servoUp()
 		msg = "Filling bucket to: %iml" % rest
 		waterLog.log("I",msg)
-		self.usePump(m_speed)	# Start pump
+		self.usePumpIn(m_speed)	# Start pump
 		x = empty
 		b_TO = self.WATER_FILL_BUCKET_TIME * 1000 + self.getCurrentTimeMS()# Set TO
 		while (x - empty) < rest:
@@ -236,7 +237,7 @@ class water:
 			self.checkTOMS(b_TO) # Check Time Out		
 			x = self.scaleReadTrue(1)	
 
-		self.usePump(0)	# Stop pump
+		self.usePumpIn(0)	# Stop pump
 		sleep(1.0)
 		filled = self.scaleReadTrue(mean_n)
 		sum = sum + (filled-empty)
@@ -249,4 +250,29 @@ class water:
 		self.servoUp()
 
 		return sum
-			
+		
+		
+	def waterTo(self,pump_no,pump_time_s):
+		msg = "Running pump: %i. for %is" % (pump_no,pump_time_s)
+		waterLog.log("","")
+		waterLog.log("I",msg)
+		end_time = pump_time_s * 1000 + self.getCurrentTimeMS()
+		while self.getCurrentTimeMS() < end_time:
+			self.runPumpTo(pump_no,255)
+			sleep(1.0)
+		self.runPumpTo(pump_no,0)
+	
+	def runPumpTo(self,pump_no,k):
+		msg = "Pump: %i, Value k = %i" % (pump_no,k)
+		waterLog.log("",msg)
+		if k < 0 or k > 255:
+			msg = "%i < 0 and %i > 255" % (k,k)
+			waterLog.log("E",msg)	
+
+		self.serialReadBytes(self.CMD_SET_MOTOR_1,0)
+		self.serialReadBytes(k,0)
+
+		x = self.serialReadBytes(self.CMD_GET_MOTOR_1,1)
+		if x != k:
+			msg = "Aim: %i, Real: %i" % (k,x)
+			waterLog.log("E",msg)

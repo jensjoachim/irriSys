@@ -24,6 +24,8 @@ unsigned long motor_run_0 = 20*1000; // 20sek
 // Left pump
 #define motor_pin_1 5		
 byte motor_speed_1 = 0;		
+unsigned long motor_stop_1 = 0;
+unsigned long motor_run_1 = 5*1000; // 1sek
 
 
 
@@ -64,10 +66,9 @@ void setup()
 	
 	pinMode(motor_pin_1, OUTPUT);
 	analogWrite(motor_pin_1,motor_speed_1);	
-	
-
-	
-
+	//analogWrite(motor_pin_1,255);
+	//delay(5000);
+	motor_stop_1 = motor_run_1 + millis();
 }
 
 void loop()
@@ -115,6 +116,9 @@ void loop()
 	if (millis() > motor_stop_0) {
 		setMotorSpeed(0,0);
 	}
+	if (millis() > motor_stop_1) {
+		setMotorSpeed(0,1);
+	}
 
 }
 
@@ -149,6 +153,7 @@ void setMotorSpeed(byte k, byte n) {
 		case 1:
 			motor_speed_1 = k;
 			analogWrite(motor_pin_1, motor_speed_1);
+			motor_stop_1 = motor_run_1 + millis();
 			break;		
 		default: 
 			break;
@@ -161,8 +166,8 @@ void getMotorSpeed(byte n) {
 			Serial.write(motor_speed_0);
 			break;
 		case 1:
-			//Serial.write(motor_speed_1);
-			break;		
+			Serial.write(motor_speed_1);
+			break;
 		default: 
 			break;
 	}			

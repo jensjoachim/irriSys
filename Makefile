@@ -1,11 +1,17 @@
 all:
+	# Install nessesary packages
 	sudo apt-get update
 	sudo apt-get -y install arduino
 	sudo apt-get -y install python-dev
 	sudo apt-get -y install python-setuptools
+	# Get ino project and make
 	cd ../; git clone git://github.com/amperka/ino.git
 	cp ino_make ../ino/Makefile
 	cd ../ino; make
-	cd ../ino/; mkdir test;
-	cd ../ino/test; ino init -t blink;
-	cd ../ino/test; ino build;
+	# Start a new uno project
+	cd ../ino/; mkdir workspace;
+	cd ../ino/workspace; ino init -t blink;
+	cd ../ino/workspace; ino build;
+	# Copy original project and build
+	cp -r arduino_code/* ../ino/workspace/
+	cd ../ino/workspace; ino build;

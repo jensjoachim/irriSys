@@ -40,8 +40,7 @@ def upload(device_name,serial_port):
 	print "Upload success!"
 
 def main():
-
-
+	runCommand("rm log")	# Clear log
 
 	# Set device
 	device_name = "nano328"
@@ -51,15 +50,9 @@ def main():
 	serial_port = "/dev/ttyUSB0"
 	#serial_port = "/dev/ttyACM0"
 	
-	#build(device_name)
-	#upload(device_name,serial_port)
-	
-	#runCommand("./ino_cmds.sh -b -m nano328 -p /dev/ttyUSB0")
-	os.system("./ino_cmds.sh -b -u -m nano328 -p /dev/ttyUSB0")
-	#quit()
+	runCommand("./ino_cmds.sh -b -u -m nano328 -p /dev/ttyUSB0")
 
 	waterSystem = water(serial_port)
-	runCommand("rm log")	# Clear log
 	waterSystem.waterIn(300)
 	quit()
 	

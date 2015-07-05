@@ -11,7 +11,7 @@ hostname -I
 
 
 Wifi:
-
+http://www.howtogeek.com/167425/how-to-setup-wi-fi-on-your-raspberry-pi-via-the-command-line/
 
 Arduino:
 http://openenergymonitor.blogspot.dk/2013/12/developing-for-arduino-remotely-on.html
@@ -21,7 +21,7 @@ Find seriel port:
 dmesg | grep tty
 
 Shared folder:
-http://raspberrywebserver.com/serveradmin/share-your-raspberry-pis-files-and-folders-across-a-network.html
+http://raspberrypihq.com/how-to-share-a-folder-with-a-windows-computer-from-a-raspberry-pi/
 
 git:
 http://readwrite.com/2013/09/30/understanding-github-a-journey-for-beginners-part-1
@@ -29,11 +29,10 @@ http://readwrite.com/2013/09/30/understanding-github-a-journey-for-beginners-par
 
 Prosedure/make to run in order to run "python run.py"
 sudo apt-get update
-sudo apt-get install arduino
-sudo apt-get install python-dev
-sudo apt-get install python-setuptools
+sudo apt-get -y install arduino
+sudo apt-get -y install python-dev
+sudo apt-get -y install python-setuptools
 git clone git://github.com/amperka/ino.git
 cd ino
 sudo python setup.py install
-
 
