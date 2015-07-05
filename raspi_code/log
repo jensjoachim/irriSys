@@ -1,0 +1,174 @@
+05 Jul 2015 12:07:19 waterIn() 
+05 Jul 2015 12:07:19 INFO: Weighting of 300ml in 2 buckets.
+05 Jul 2015 12:07:19 INFO: Setting Bucket Up
+05 Jul 2015 12:07:19 servoUp() 
+05 Jul 2015 12:07:19 INFO: Filling bucket to: 200ml
+05 Jul 2015 12:07:19 usePump() Value k = 255
+05 Jul 2015 12:07:19 scaleReadTrue() n = 0
+05 Jul 2015 12:07:19 scaleReadTrue() n = 0
+05 Jul 2015 12:07:19 scaleReadTrue() n = 0
+05 Jul 2015 12:07:19 scaleReadTrue() n = 1
+05 Jul 2015 12:07:19 scaleReadTrue() n = 5
+05 Jul 2015 12:07:22 scaleReadTrue() n = 66
+05 Jul 2015 12:07:22 scaleReadTrue() n = 67
+05 Jul 2015 12:07:23 scaleReadTrue() n = 69
+05 Jul 2015 12:07:23 scaleReadTrue() n = 70
+05 Jul 2015 12:07:23 scaleReadTrue() n = 72
+05 Jul 2015 12:07:23 scaleReadTrue() n = 74
+05 Jul 2015 12:07:23 scaleReadTrue() n = 76
+05 Jul 2015 12:07:23 scaleReadTrue() n = 78
+05 Jul 2015 12:07:23 scaleReadTrue() n = 79
+05 Jul 2015 12:07:23 scaleReadTrue() n = 81
+05 Jul 2015 12:07:23 scaleReadTrue() n = 82
+05 Jul 2015 12:07:23 scaleReadTrue() n = 83
+05 Jul 2015 12:07:23 scaleReadTrue() n = 85
+05 Jul 2015 12:07:24 scaleReadTrue() n = 86
+05 Jul 2015 12:07:24 scaleReadTrue() n = 88
+05 Jul 2015 12:07:24 scaleReadTrue() n = 90
+05 Jul 2015 12:07:24 scaleReadTrue() n = 91
+05 Jul 2015 12:07:24 scaleReadTrue() n = 93
+05 Jul 2015 12:07:24 scaleReadTrue() n = 95
+05 Jul 2015 12:07:24 scaleReadTrue() n = 97
+05 Jul 2015 12:07:24 scaleReadTrue() n = 98
+05 Jul 2015 12:07:24 scaleReadTrue() n = 100
+05 Jul 2015 12:07:24 scaleReadTrue() n = 101
+05 Jul 2015 12:07:24 scaleReadTrue() n = 103
+05 Jul 2015 12:07:24 scaleReadTrue() n = 104
+05 Jul 2015 12:07:25 scaleReadTrue() n = 106
+05 Jul 2015 12:07:25 scaleReadTrue() n = 107
+05 Jul 2015 12:07:25 scaleReadTrue() n = 109
+05 Jul 2015 12:07:25 scaleReadTrue() n = 111
+05 Jul 2015 12:07:25 scaleReadTrue() n = 113
+05 Jul 2015 12:07:25 scaleReadTrue() n = 114
+05 Jul 2015 12:07:25 scaleReadTrue() n = 116
+05 Jul 2015 12:07:25 scaleReadTrue() n = 118
+05 Jul 2015 12:07:25 scaleReadTrue() n = 119
+05 Jul 2015 12:07:25 scaleReadTrue() n = 121
+05 Jul 2015 12:07:25 scaleReadTrue() n = 122
+05 Jul 2015 12:07:25 scaleReadTrue() n = 124
+05 Jul 2015 12:07:26 scaleReadTrue() n = 125
+05 Jul 2015 12:07:26 scaleReadTrue() n = 127
+05 Jul 2015 12:07:26 scaleReadTrue() n = 129
+05 Jul 2015 12:07:26 scaleReadTrue() n = 130
+05 Jul 2015 12:07:26 scaleReadTrue() n = 132
+05 Jul 2015 12:07:26 scaleReadTrue() n = 134
+05 Jul 2015 12:07:26 scaleReadTrue() n = 135
+05 Jul 2015 12:07:26 scaleReadTrue() n = 137
+05 Jul 2015 12:07:26 scaleReadTrue() n = 138
+05 Jul 2015 12:07:26 scaleReadTrue() n = 140
+05 Jul 2015 12:07:26 scaleReadTrue() n = 141
+05 Jul 2015 12:07:26 scaleReadTrue() n = 143
+05 Jul 2015 12:07:27 scaleReadTrue() n = 144
+05 Jul 2015 12:07:27 scaleReadTrue() n = 146
+05 Jul 2015 12:07:27 scaleReadTrue() n = 148
+05 Jul 2015 12:07:27 scaleReadTrue() n = 150
+05 Jul 2015 12:07:27 scaleReadTrue() n = 151
+05 Jul 2015 12:07:27 scaleReadTrue() n = 153
+05 Jul 2015 12:07:27 scaleReadTrue() n = 154
+05 Jul 2015 12:07:27 scaleReadTrue() n = 156
+05 Jul 2015 12:07:27 scaleReadTrue() n = 158
+05 Jul 2015 12:07:27 scaleReadTrue() n = 159
+05 Jul 2015 12:07:27 scaleReadTrue() n = 160
+05 Jul 2015 12:07:28 scaleReadTrue() n = 162
+05 Jul 2015 12:07:28 scaleReadTrue() n = 164
+05 Jul 2015 12:07:28 scaleReadTrue() n = 166
+05 Jul 2015 12:07:28 scaleReadTrue() n = 168
+05 Jul 2015 12:07:28 scaleReadTrue() n = 169
+05 Jul 2015 12:07:28 scaleReadTrue() n = 171
+05 Jul 2015 12:07:28 scaleReadTrue() n = 172
+05 Jul 2015 12:07:28 scaleReadTrue() n = 174
+05 Jul 2015 12:07:28 scaleReadTrue() n = 175
+05 Jul 2015 12:07:28 scaleReadTrue() n = 177
+05 Jul 2015 12:07:28 scaleReadTrue() n = 178
+05 Jul 2015 12:07:28 scaleReadTrue() n = 180
+05 Jul 2015 12:07:29 scaleReadTrue() n = 181
+05 Jul 2015 12:07:29 scaleReadTrue() n = 183
+05 Jul 2015 12:07:29 scaleReadTrue() n = 185
+05 Jul 2015 12:07:29 scaleReadTrue() n = 187
+05 Jul 2015 12:07:29 scaleReadTrue() n = 188
+05 Jul 2015 12:07:29 scaleReadTrue() n = 190
+05 Jul 2015 12:07:29 scaleReadTrue() n = 191
+05 Jul 2015 12:07:29 scaleReadTrue() n = 193
+05 Jul 2015 12:07:29 scaleReadTrue() n = 194
+05 Jul 2015 12:07:29 scaleReadTrue() n = 196
+05 Jul 2015 12:07:29 scaleReadTrue() n = 197
+05 Jul 2015 12:07:29 scaleReadTrue() n = 199
+05 Jul 2015 12:07:30 scaleReadTrue() n = 201
+05 Jul 2015 12:07:30 usePump() Value k = 0
+05 Jul 2015 12:07:31 scaleReadTrue() n = 202
+05 Jul 2015 12:07:31 INFO: Setting Bucket Right
+05 Jul 2015 12:07:31 servoRight() 
+05 Jul 2015 12:07:35 servoUp() 
+05 Jul 2015 12:07:37 scaleReadTrue() n = 0
+05 Jul 2015 12:07:37 INFO: Filled: 202.8, Empty: -0.1, Bucket: 202.9, Rest: 97, Sum: 202.9
+05 Jul 2015 12:07:37 INFO: Setting Bucket Up
+05 Jul 2015 12:07:37 servoUp() 
+05 Jul 2015 12:07:37 INFO: Filling bucket to: 97ml
+05 Jul 2015 12:07:37 usePump() Value k = 255
+05 Jul 2015 12:07:37 scaleReadTrue() n = 0
+05 Jul 2015 12:07:37 scaleReadTrue() n = 0
+05 Jul 2015 12:07:37 scaleReadTrue() n = 0
+05 Jul 2015 12:07:37 scaleReadTrue() n = 2
+05 Jul 2015 12:07:37 scaleReadTrue() n = 6
+05 Jul 2015 12:07:37 scaleReadTrue() n = 8
+05 Jul 2015 12:07:37 scaleReadTrue() n = 9
+05 Jul 2015 12:07:37 scaleReadTrue() n = 11
+05 Jul 2015 12:07:38 scaleReadTrue() n = 13
+05 Jul 2015 12:07:38 scaleReadTrue() n = 15
+05 Jul 2015 12:07:38 scaleReadTrue() n = 17
+05 Jul 2015 12:07:38 scaleReadTrue() n = 18
+05 Jul 2015 12:07:38 scaleReadTrue() n = 20
+05 Jul 2015 12:07:38 scaleReadTrue() n = 21
+05 Jul 2015 12:07:38 scaleReadTrue() n = 23
+05 Jul 2015 12:07:38 scaleReadTrue() n = 24
+05 Jul 2015 12:07:38 scaleReadTrue() n = 26
+05 Jul 2015 12:07:38 scaleReadTrue() n = 27
+05 Jul 2015 12:07:38 scaleReadTrue() n = 29
+05 Jul 2015 12:07:39 scaleReadTrue() n = 31
+05 Jul 2015 12:07:39 scaleReadTrue() n = 33
+05 Jul 2015 12:07:39 scaleReadTrue() n = 35
+05 Jul 2015 12:07:39 scaleReadTrue() n = 36
+05 Jul 2015 12:07:39 scaleReadTrue() n = 38
+05 Jul 2015 12:07:39 scaleReadTrue() n = 39
+05 Jul 2015 12:07:39 scaleReadTrue() n = 41
+05 Jul 2015 12:07:39 scaleReadTrue() n = 42
+05 Jul 2015 12:07:39 scaleReadTrue() n = 44
+05 Jul 2015 12:07:39 scaleReadTrue() n = 45
+05 Jul 2015 12:07:39 scaleReadTrue() n = 47
+05 Jul 2015 12:07:39 scaleReadTrue() n = 48
+05 Jul 2015 12:07:40 scaleReadTrue() n = 51
+05 Jul 2015 12:07:40 scaleReadTrue() n = 52
+05 Jul 2015 12:07:40 scaleReadTrue() n = 54
+05 Jul 2015 12:07:40 scaleReadTrue() n = 56
+05 Jul 2015 12:07:40 scaleReadTrue() n = 57
+05 Jul 2015 12:07:40 scaleReadTrue() n = 59
+05 Jul 2015 12:07:40 scaleReadTrue() n = 60
+05 Jul 2015 12:07:40 scaleReadTrue() n = 61
+05 Jul 2015 12:07:40 scaleReadTrue() n = 63
+05 Jul 2015 12:07:40 scaleReadTrue() n = 65
+05 Jul 2015 12:07:40 scaleReadTrue() n = 66
+05 Jul 2015 12:07:40 scaleReadTrue() n = 68
+05 Jul 2015 12:07:41 scaleReadTrue() n = 70
+05 Jul 2015 12:07:41 scaleReadTrue() n = 72
+05 Jul 2015 12:07:41 scaleReadTrue() n = 74
+05 Jul 2015 12:07:41 scaleReadTrue() n = 75
+05 Jul 2015 12:07:41 scaleReadTrue() n = 77
+05 Jul 2015 12:07:41 scaleReadTrue() n = 78
+05 Jul 2015 12:07:41 scaleReadTrue() n = 80
+05 Jul 2015 12:07:41 scaleReadTrue() n = 81
+05 Jul 2015 12:07:41 scaleReadTrue() n = 82
+05 Jul 2015 12:07:41 scaleReadTrue() n = 84
+05 Jul 2015 12:07:41 scaleReadTrue() n = 86
+05 Jul 2015 12:07:42 scaleReadTrue() n = 88
+05 Jul 2015 12:07:42 scaleReadTrue() n = 90
+05 Jul 2015 12:07:42 scaleReadTrue() n = 91
+05 Jul 2015 12:07:42 scaleReadTrue() n = 93
+05 Jul 2015 12:07:42 scaleReadTrue() n = 95
+05 Jul 2015 12:07:42 scaleReadTrue() n = 96
+05 Jul 2015 12:07:42 scaleReadTrue() n = 97
+05 Jul 2015 12:07:42 usePump() Value k = 0
+05 Jul 2015 12:07:44 scaleReadTrue() n = 99
+05 Jul 2015 12:07:44 INFO: Filled: 99.2, Empty: -0.1, Bucket: 99.3, Rest: -2, Sum: 302.2
+05 Jul 2015 12:07:44 INFO: Setting Bucket Right
+05 Jul 2015 12:07:44 servoRight() 
+05 Jul 2015 12:07:47 servoUp() 

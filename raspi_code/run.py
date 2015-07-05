@@ -54,6 +54,10 @@ def main():
 	#build(device_name)
 	#upload(device_name,serial_port)
 	
+	#runCommand("./ino_cmds.sh -b -m nano328 -p /dev/ttyUSB0")
+	os.system("./ino_cmds.sh -b -u -m nano328 -p /dev/ttyUSB0")
+	#quit()
+
 	waterSystem = water(serial_port)
 	runCommand("rm log")	# Clear log
 	waterSystem.waterIn(300)
