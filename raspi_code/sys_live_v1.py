@@ -41,8 +41,12 @@ def main():
 	
 	#runCommand("./ino_cmds.sh -b -u -m nano328 -p /dev/ttyUSB0")
 
-	WATER_HOUR = 7 #11;
-	WATER_AMOUNT = 500 
+	WATER_HOUR = 21
+	WATER_AMOUNT = 320
+	WATER_TIME = 240
+	#waterSystem = water(serial_port)
+	#waterSystem.waterTo(0,120)
+ 	#quit() 
 	
 	while 1:
 		if getHour() == WATER_HOUR:
@@ -51,7 +55,7 @@ def main():
 			# Water
 			waterSystem.waterIn(WATER_AMOUNT)
 			# Send water to plant
-			waterSystem.waterTo(0,160)
+			waterSystem.waterTo(0,WATER_TIME)
 			# Wait an hour
 			while getHour() == WATER_HOUR:
 				sleep(60.0)

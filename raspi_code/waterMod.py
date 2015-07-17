@@ -43,7 +43,7 @@ class water:
 		self.SERVO_SPEED_DOWN = 0.02
 
 		# WATER
-		self.WATER_BUCKET_MAX = 200
+		self.WATER_BUCKET_MAX = 150
 		self.WATER_FILL_BUCKET_TIME = 30
 		
 		ws = waterSerial(port_s)
