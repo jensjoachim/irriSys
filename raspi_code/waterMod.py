@@ -22,8 +22,12 @@ class water:
 
 		self.CMD_SET_MOTOR_0 = int("0x10", 0)	# 8 * Motors
 		self.CMD_SET_MOTOR_1 = int("0x11", 0)
+		self.CMD_SET_MOTOR_2 = int("0x12", 0)
+		self.CMD_SET_MOTOR_3 = int("0x13", 0)
 		self.CMD_GET_MOTOR_0 = int("0x18", 0)
 		self.CMD_GET_MOTOR_1 = int("0x19", 0)
+		self.CMD_GET_MOTOR_2 = int("0x1A", 0)
+		self.CMD_GET_MOTOR_3 = int("0x1B", 0)
 
 		self.CMD_TEST_0 = int("0x80", 0)			# 16 * Tests
 		self.CMD_TEST_1 = int("0x81", 0)	
@@ -263,16 +267,41 @@ class water:
 		self.runPumpTo(pump_no,0)
 	
 	def runPumpTo(self,pump_no,k):
+		# msg = "Pump: %i, Value k = %i" % (pump_no,k)
+		# waterLog.log("",msg)
+		# if k < 0 or k > 255:
+			# msg = "%i < 0 and %i > 255" % (k,k)
+			# waterLog.log("E",msg)	
+			
+		# self.serialReadBytes(self.CMD_SET_MOTOR_2,0)
+		# self.serialReadBytes(k,0)
+
+		# x = self.serialReadBytes(self.CMD_GET_MOTOR_2,1)
+		# if x != k:
+			# msg = "Aim: %i, Real: %i" % (k,x)
+			# waterLog.log("E",msg)
+			
+		if pump_no == 0:
+			serial_cmd_set = self.CMD_SET_MOTOR_1
+			serial_cmd_get = self.CMD_GET_MOTOR_1
+		elif pump_no == 1:
+			serial_cmd_set = self.CMD_SET_MOTOR_2
+			serial_cmd_get = self.CMD_GET_MOTOR_2
+		else: # Pump no. not existing
+			msg = "Pump no. %i not existing" % pump_no
+			waterLog.log("E",msg)
+		
 		msg = "Pump: %i, Value k = %i" % (pump_no,k)
 		waterLog.log("",msg)
 		if k < 0 or k > 255:
 			msg = "%i < 0 and %i > 255" % (k,k)
 			waterLog.log("E",msg)	
-
-		self.serialReadBytes(self.CMD_SET_MOTOR_1,0)
+			
+		self.serialReadBytes(serial_cmd_set,0)
 		self.serialReadBytes(k,0)
 
-		x = self.serialReadBytes(self.CMD_GET_MOTOR_1,1)
+		x = self.serialReadBytes(serial_cmd_get,1)
 		if x != k:
 			msg = "Aim: %i, Real: %i" % (k,x)
 			waterLog.log("E",msg)
+			

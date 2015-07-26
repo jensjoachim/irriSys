@@ -39,23 +39,32 @@ def main():
 	serial_port = "/dev/ttyUSB0"
 	#serial_port = "/dev/ttyACM0"
 	
-	#runCommand("./ino_cmds.sh -b -u -m nano328 -p /dev/ttyUSB0")
+	runCommand("./ino_cmds.sh -b -u -m nano328 -p /dev/ttyUSB0")
 
-	WATER_HOUR = 21
-	WATER_AMOUNT = 320
-	WATER_TIME = 240
+	WATER_HOUR = 7
+	AMOUNT_CHILI_TOP = 400
+	AMOUNT_CHILI_BOT = 150
+	PUMP_TIME_CHILI_TOP = 180
+	PUMP_TIME_CHILI_BOT = 180
+	PUMP_CHILI_TOP = 0
+	PUMP_CHILI_BOT = 1
+
 	#waterSystem = water(serial_port)
-	#waterSystem.waterTo(0,120)
+	#waterSystem.waterTo(CHILI_TOP,10)
+	#sleep(10.0)
+	#waterSystem.waterTo(CHILI_BOT,10)
  	#quit() 
 	
 	while 1:
 		if getHour() == WATER_HOUR:
 			# Connect to serial
-			waterSystem = water(serial_port)
-			# Water
-			waterSystem.waterIn(WATER_AMOUNT)
-			# Send water to plant
-			waterSystem.waterTo(0,WATER_TIME)
+			waterSystem = water(serial_port)	
+			# Water PUMP_CHILI_TOP
+			waterSystem.waterIn(AMOUNT_CHILI_TOP)
+			waterSystem.waterTo(PUMP_CHILI_TOP,PUMP_TIME_CHILI_TOP)
+			# Water PUMP_CHILI_TOP
+			waterSystem.waterIn(AMOUNT_CHILI_BOT)
+			waterSystem.waterTo(PUMP_CHILI_BOT,PUMP_TIME_CHILI_BOT)
 			# Wait an hour
 			while getHour() == WATER_HOUR:
 				sleep(60.0)

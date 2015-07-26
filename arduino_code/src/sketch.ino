@@ -13,20 +13,24 @@ byte servo_pos_0 = 73;
 
 // Timeout
 long tic;
-long timeout_delay = 1000;
+long timeout_delay = 2000; //1000;
 
 // Motor control
-// Right pump
+// Right pump (back)
 #define motor_pin_0 3		
 byte motor_speed_0 = 0;		
 unsigned long motor_stop_0 = 0;
 unsigned long motor_run_0 = 20*1000; // 20sek
-// Left pump
+// Left pump (back)
 #define motor_pin_1 5		
 byte motor_speed_1 = 0;		
 unsigned long motor_stop_1 = 0;
-unsigned long motor_run_1 = 5*1000; // 1sek
-
+unsigned long motor_run_1 = 5*1000; // 5sek
+// Left pump (front)
+#define motor_pin_2 6		
+byte motor_speed_2 = 0;		
+unsigned long motor_stop_2 = 0;
+unsigned long motor_run_2 = 5*1000; // 5sek
 
 
 // Commands
@@ -37,8 +41,12 @@ unsigned long motor_run_1 = 5*1000; // 1sek
 
 #define SET_MOTOR_0		0x10	// 8 * Motors
 #define SET_MOTOR_1		0x11
+#define SET_MOTOR_2		0x12
+#define SET_MOTOR_3		0x13
 #define GET_MOTOR_0		0x18	
 #define GET_MOTOR_1		0x19
+#define GET_MOTOR_2		0x1A	
+#define GET_MOTOR_3		0x1B
 
 #define TEST_0			0x80	// 16 * Tests
 #define TEST_1			0x81	
@@ -66,9 +74,11 @@ void setup()
 	
 	pinMode(motor_pin_1, OUTPUT);
 	analogWrite(motor_pin_1,motor_speed_1);	
-	//analogWrite(motor_pin_1,255);
-	//delay(5000);
 	motor_stop_1 = motor_run_1 + millis();
+	
+	pinMode(motor_pin_2, OUTPUT);
+	analogWrite(motor_pin_2,motor_speed_2);	
+	motor_stop_2 = motor_run_2 + millis();
 }
 
 void loop()
@@ -95,12 +105,19 @@ void loop()
 				if (timeoutM() == 0) {break;}
 				setMotorSpeed(Serial.read(),1);
 				break;
+			case SET_MOTOR_2:
+				if (timeoutM() == 0) {break;}
+				setMotorSpeed(Serial.read(),2);
+				break;				
 			case GET_MOTOR_0:
 				getMotorSpeed(0);
 				break;
 			case GET_MOTOR_1:
 				getMotorSpeed(1);	
 				break;
+			case GET_MOTOR_2:
+				getMotorSpeed(2);	
+				break;				
 			case TEST_0:
 				Serial.write(10);
 				break;	
@@ -118,6 +135,9 @@ void loop()
 	}
 	if (millis() > motor_stop_1) {
 		setMotorSpeed(0,1);
+	}
+	if (millis() > motor_stop_2) {
+		setMotorSpeed(0,2);
 	}
 
 }
@@ -154,7 +174,12 @@ void setMotorSpeed(byte k, byte n) {
 			motor_speed_1 = k;
 			analogWrite(motor_pin_1, motor_speed_1);
 			motor_stop_1 = motor_run_1 + millis();
-			break;		
+			break;	
+		case 2:
+			motor_speed_2 = k;
+			analogWrite(motor_pin_2, motor_speed_2);
+			motor_stop_2 = motor_run_2 + millis();
+			break;				
 		default: 
 			break;
 	}			
@@ -167,6 +192,9 @@ void getMotorSpeed(byte n) {
 			break;
 		case 1:
 			Serial.write(motor_speed_1);
+			break;
+		case 2:
+			Serial.write(motor_speed_2);
 			break;
 		default: 
 			break;
