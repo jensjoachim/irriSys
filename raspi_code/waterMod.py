@@ -49,6 +49,7 @@ class water:
 		# WATER
 		self.WATER_BUCKET_MAX = 150
 		self.WATER_FILL_BUCKET_TIME = 30
+		self.WATER_FULL_BUCKET_OUT_TIME = 60
 		
 		ws = waterSerial(port_s)
 		self.port = ws.getPort()
@@ -153,7 +154,7 @@ class water:
 		self.servoUse(self.SERVO_MIDDLE_DEG)
 		
 	def servoLeft(self):
-		Bucketlog("","")
+		waterLog.log("","")
 		for i in range(self.SERVO_MIDDLE_DEG,self.SERVO_LEFT_DEG+1):	
 			self.servoSet(i)
 			sleep(self.SERVO_SPEED_DOWN)
@@ -183,6 +184,23 @@ class water:
 		if x != k:
 			msg = "Aim: %i, Real: %i" % (k,x)
 			waterLog.log("E",msg)	
+			
+	def usePumpOut(self,k):
+		msg = "Value k = %i" % k
+		waterLog.log("",msg)
+		#if k < 0 and k > 255:
+		if k < 0 or k > 255:
+			msg = "%i < 0 and %i > 255" % (k,k)
+			waterLog.log("E",msg)	
+
+		self.serialReadBytes(self.CMD_SET_MOTOR_3,0)
+		self.serialReadBytes(k,0)
+
+		x = self.serialReadBytes(self.CMD_GET_MOTOR_3,1)
+		if x != k:
+			msg = "Aim: %i, Real: %i" % (k,x)
+			waterLog.log("E",msg)		
+			
 		
 	def waterIn(self,k):
 		mean_n = 10;
@@ -267,20 +285,6 @@ class water:
 		self.runPumpTo(pump_no,0)
 	
 	def runPumpTo(self,pump_no,k):
-		# msg = "Pump: %i, Value k = %i" % (pump_no,k)
-		# waterLog.log("",msg)
-		# if k < 0 or k > 255:
-			# msg = "%i < 0 and %i > 255" % (k,k)
-			# waterLog.log("E",msg)	
-			
-		# self.serialReadBytes(self.CMD_SET_MOTOR_2,0)
-		# self.serialReadBytes(k,0)
-
-		# x = self.serialReadBytes(self.CMD_GET_MOTOR_2,1)
-		# if x != k:
-			# msg = "Aim: %i, Real: %i" % (k,x)
-			# waterLog.log("E",msg)
-			
 		if pump_no == 0:
 			serial_cmd_set = self.CMD_SET_MOTOR_1
 			serial_cmd_get = self.CMD_GET_MOTOR_1
@@ -304,4 +308,40 @@ class water:
 		if x != k:
 			msg = "Aim: %i, Real: %i" % (k,x)
 			waterLog.log("E",msg)
+	
+	
+	def waterOut(self):
+		mean_n = 10
+		m_speed = 255
+		sum = 0
+		msg = "Weighting off water."
+		waterLog.log("","")
+		waterLog.log("I",msg)
+		run = True
+		while run:
+			fill_time = self.WATER_FULL_BUCKET_OUT_TIME * 1000 + self.getCurrentTimeMS()
+			waterLog.log("I","Setting Bucket Up")
+			self.servoUp()
+			waterLog.log("I","Filling bucket")
+			x = 0
+			#self.usePumpOut(m_speed)	# Start pump
+			while x < self.WATER_BUCKET_MAX:
+				if fill_time < self.getCurrentTimeMS():
+					run = False
+					break
+				self.usePumpOut(m_speed)	# Start pump
+				x = self.scaleReadTrue(1)
+			self.usePumpOut(0)	# Start pump
+			filled = self.scaleReadTrue(mean_n)
+			self.servoLeft()
+			sleep(1.0)
+			self.servoUp()
+			sleep(1.0)
+			empty = self.scaleReadTrue(mean_n)
+			sum = sum + (filled-empty)
+			msg = "Filled: %i, Empty: %i, Bucket: %i, Sum: %i" % (filled,empty,filled-empty,sum)
+			waterLog.log("I",msg)
 			
+		msg = "Weighting off finished with a sum of: %iml" % sum
+		waterLog.log("I",msg)
+		return sum

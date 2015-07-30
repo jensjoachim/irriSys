@@ -31,6 +31,11 @@ unsigned long motor_run_1 = 5*1000; // 5sek
 byte motor_speed_2 = 0;		
 unsigned long motor_stop_2 = 0;
 unsigned long motor_run_2 = 5*1000; // 5sek
+// Left botttom (front)
+#define motor_pin_3 10		
+byte motor_speed_3 = 0;		
+unsigned long motor_stop_3 = 0;
+unsigned long motor_run_3 = 5*1000; // 5sek
 
 
 // Commands
@@ -79,6 +84,10 @@ void setup()
 	pinMode(motor_pin_2, OUTPUT);
 	analogWrite(motor_pin_2,motor_speed_2);	
 	motor_stop_2 = motor_run_2 + millis();
+	
+	pinMode(motor_pin_3, OUTPUT);
+	analogWrite(motor_pin_3,motor_speed_3);	
+	motor_stop_3 = motor_run_3 + millis();
 }
 
 void loop()
@@ -108,7 +117,11 @@ void loop()
 			case SET_MOTOR_2:
 				if (timeoutM() == 0) {break;}
 				setMotorSpeed(Serial.read(),2);
-				break;				
+				break;	
+			case SET_MOTOR_3:
+				if (timeoutM() == 0) {break;}
+				setMotorSpeed(Serial.read(),3);
+				break;	
 			case GET_MOTOR_0:
 				getMotorSpeed(0);
 				break;
@@ -117,7 +130,10 @@ void loop()
 				break;
 			case GET_MOTOR_2:
 				getMotorSpeed(2);	
-				break;				
+				break;		
+			case GET_MOTOR_3:
+				getMotorSpeed(3);	
+				break;					
 			case TEST_0:
 				Serial.write(10);
 				break;	
@@ -139,7 +155,9 @@ void loop()
 	if (millis() > motor_stop_2) {
 		setMotorSpeed(0,2);
 	}
-
+	if (millis() > motor_stop_3) {
+		setMotorSpeed(0,3);
+	}
 }
 
 byte timeoutM() {
@@ -179,6 +197,11 @@ void setMotorSpeed(byte k, byte n) {
 			motor_speed_2 = k;
 			analogWrite(motor_pin_2, motor_speed_2);
 			motor_stop_2 = motor_run_2 + millis();
+			break;	
+		case 3:
+			motor_speed_3 = k;
+			analogWrite(motor_pin_3, motor_speed_3);
+			motor_stop_3 = motor_run_3 + millis();
 			break;				
 		default: 
 			break;
@@ -196,6 +219,9 @@ void getMotorSpeed(byte n) {
 		case 2:
 			Serial.write(motor_speed_2);
 			break;
+		case 3:
+			Serial.write(motor_speed_3);
+			break;			
 		default: 
 			break;
 	}			
