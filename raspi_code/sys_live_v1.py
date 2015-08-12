@@ -41,7 +41,7 @@ def main():
 	
 	#runCommand("./ino_cmds.sh -b -u -m nano328 -p /dev/ttyUSB0")
 
-	WATER_HOUR = 8
+	WATER_HOUR = 12
 	AMOUNT_CHILI_TOP = 700
 	AMOUNT_CHILI_BOT = 300
 	PUMP_TIME_CHILI_TOP = 180
@@ -71,12 +71,12 @@ def main():
 			# Water PUMP_CHILI_TOP
 			waterSystem.waterIn(AMOUNT_CHILI_BOT)
 			waterSystem.waterTo(PUMP_CHILI_BOT,PUMP_TIME_CHILI_BOT)
-			sleep(60.0*5)
+			#sleep(60.0*5)
 			waterSystem.waterOut()
 			# Water PUMP_CHILI_TOP
 			waterSystem.waterIn(AMOUNT_CHILI_TOP)
 			waterSystem.waterTo(PUMP_CHILI_TOP,PUMP_TIME_CHILI_TOP)
-			sleep(60.0*5)
+			#sleep(60.0*10)
 			waterSystem.waterOut()
 			# Wait an hour
 			while getHour() == WATER_HOUR:
