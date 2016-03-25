@@ -37,14 +37,14 @@ done
 
 if [ ${BUILD} == "TRUE" ]
 then
-	build_s="ino build"
+	build_s="sudo ino build"
 	if [ ${BOARD} != "FALSE" ]
 	then
 		build_s=$build_s" -m "$BOARD
 	fi
 	echo $build_s
 	# Maybe also remove the directory
-	cp -r ../arduino_code/* ../../ino/workspace/
+	sudo cp -r ../arduino_code/* ../../ino/workspace/
 	cd ../../ino/workspace
 	$build_s
 	cd ../../irriSys/raspi_code
@@ -52,7 +52,7 @@ fi
 
 if [ ${UPLOAD} == "TRUE" ]
 then
-	upload_s="ino upload"
+	upload_s="sudo ino upload"
 	if [ ${BOARD} != "FALSE" ]
 	then
 		upload_s=$upload_s" -m "$BOARD
