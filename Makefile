@@ -18,4 +18,5 @@ all:
 	cd ../ino/workspace; ino build;
 	# Copy wifi settings
 	sudo cp network/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf
+	sudo chmod +x raspi_code/*
 	sudo reboot
