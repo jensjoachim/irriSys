@@ -40,7 +40,7 @@ def upload(device_name,serial_port):
 	print "Upload success!"
 
 def main():
-	runCommand("rm log")	# Clear log
+	#runCommand("rm log")	# Clear log
 
 	# Set device
 	device_name = "nano328"
@@ -53,17 +53,20 @@ def main():
 	runCommand("./ino_cmds.sh -b -u -m nano328 -p /dev/ttyUSB0")
 
 	waterSystem = water(serial_port)
-	waterSystem.waterIn(300)
+	waterSystem.waterIn(200)
+	waterSystem.waterTo(0,30)
+	waterSystem.waterIn(200)
+	waterSystem.waterTo(1,30)
 	quit()
 	
-	while 1:
-		print waterSystem.scaleReadCont(2)
+	#while 1:
+	#	print waterSystem.scaleReadCont(2)
 		
 	while 1:
 		sleep(2.0)
-		waterSystem.servoSet(100)
+		waterSystem.servoSet(0)
 		sleep(2.0)
-		waterSystem.servoSet(120)
+		waterSystem.servoSet(160)
 	quit()
 
 

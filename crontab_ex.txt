@@ -1,0 +1,1 @@
+0 9 * * * sudo /usr/bin/python2.7 /home/pi/irriSys/raspi_code/sys_live_v1.py &

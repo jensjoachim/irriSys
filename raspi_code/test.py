@@ -31,10 +31,10 @@ def main():
 	
 	#runCommand("./ino_cmds.sh -b -u -m nano328 -p /dev/ttyUSB0")
 
-	AMOUNT_CHILI_TOP = 400
-	AMOUNT_CHILI_BOT = 400
-	PUMP_TIME_CHILI_TOP = 60
-	PUMP_TIME_CHILI_BOT = 60
+	AMOUNT_CHILI_TOP = 250
+	AMOUNT_CHILI_BOT = 250
+	PUMP_TIME_CHILI_TOP = 40
+	PUMP_TIME_CHILI_BOT = 40
 	PUMP_CHILI_TOP = 0
 	PUMP_CHILI_BOT = 1
 
@@ -59,15 +59,15 @@ def main():
 	# Water PUMP_CHILI_TOP
 	waterSystem.waterIn(AMOUNT_CHILI_BOT)
 	waterSystem.waterTo(PUMP_CHILI_BOT,PUMP_TIME_CHILI_BOT)
-	sleep(60.0*2)
+	sleep(20.0)
 	waterSystem.waterOut()
 	# Water PUMP_CHILI_TOP
 	waterSystem.waterIn(AMOUNT_CHILI_TOP)
 	waterSystem.waterTo(PUMP_CHILI_TOP,PUMP_TIME_CHILI_TOP)
-	sleep(60.0*2)
+	sleep(20.0)
 	waterSystem.waterOut()
 
-	sleep(60.0)
+	sleep(20.0)
 		
 	quit()
 	
