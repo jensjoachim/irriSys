@@ -31,8 +31,8 @@ def main():
 	
 	#runCommand("./ino_cmds.sh -b -u -m nano328 -p /dev/ttyUSB0")
 
-	AMOUNT_CHILI_TOP = 250
-	AMOUNT_CHILI_BOT = 250
+	AMOUNT_CHILI_TOP = 200
+	AMOUNT_CHILI_BOT = 200
 	PUMP_TIME_CHILI_TOP = 40
 	PUMP_TIME_CHILI_BOT = 40
 	PUMP_CHILI_TOP = 0

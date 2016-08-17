@@ -342,6 +342,60 @@ class water:
 			msg = "Filled: %i, Empty: %i, Bucket: %i, Sum: %i" % (filled,empty,filled-empty,sum)
 			waterLog.log("I",msg)
 			
+			
 		msg = "Weighting off finished with a sum of: %iml" % sum
 		waterLog.log("I",msg)
 		return sum
+		
+	def autoWater(self,unit,initialAmount):
+	
+		# Get the time for new measurement
+		ss = waterLog.getTime()
+	
+	
+		# Check if file is there
+		fileNameWaterIn = "in_%i.txt" % (unit)
+		if os.path.isfile(fileNameWaterIn):
+			# Then read last value
+			with open(fileNameWaterIn) as fileWaterIn:
+				lines = fileWaterIn.readlines()
+				lastLine = lines[-1]
+				lastLineSec = lastLine.split(' ',4)
+				nextAmount = int(lastLineSec[4])
+		else:
+			# If not then make the file
+			with open(fileNameWaterIn, "a") as fileWaterIn:
+				fileWaterIn.write("")
+				nextAmount = initialAmount
+	
+	
+		# Water PUMP_CHILI_TOP
+		actualWaterIn = self.waterIn(nextAmount)
+		fileNameActualWaterIn = "a_%i.txt" % (unit)
+		with open(fileNameActualWaterIn, "a") as fileActualWaterIn:
+			textActualWaterIn = ss+" %i \n" % (actualWaterIn)
+			fileActualWaterIn.write(textActualWaterIn)
+		self.waterTo(unit,nextAmount/5+20)
+		sleep(60.0*3)
+		sum = 0
+		sum = self.waterOut()
+	
+		# Log waterOut
+		fileNameWaterOut = "out_%i.txt" % (unit)
+		with open(fileNameWaterOut, "a") as nextAmountFile:
+			amountText = ""+ss+" Amount: %i\n" % (sum)
+			nextAmountFile.write(amountText)
+		
+		# Update WaterIn
+		if sum < 10:
+			nextAmount = int(float(nextAmount) * (1.0 + 0.2));
+		else:
+			nextAmount = nextAmount + (int(float(nextAmount) * 0.2) - sum)
+			
+		if nextAmount <= 5:
+			nextAmount = 10
+		
+		with open(fileNameWaterIn, "a") as fileWaterIn:
+			textWaterIn = ss+" %i \n" % (nextAmount)
+			fileWaterIn.write(textWaterIn)
+		

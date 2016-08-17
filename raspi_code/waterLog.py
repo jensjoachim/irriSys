@@ -33,3 +33,6 @@ def log(s0, s1):
 		output = strftime("%d %b %Y %H:%M:%S", gmtime()) + " " + inspect.stack()[1][3] + "() " + s1 + "\n"
 		file = open("log", "a")
 		file.write(output)
+
+def getTime():
+	return "" + strftime("%d %b %Y %H:%M:%S", gmtime())
