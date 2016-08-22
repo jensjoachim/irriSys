@@ -349,12 +349,14 @@ class water:
 		
 	def autoWater(self,unit,initialAmount):
 	
+		sysPath = "/home/pi/irriSys/raspi_code/"
+
 		# Get the time for new measurement
 		ss = waterLog.getTime()
 	
 	
 		# Check if file is there
-		fileNameWaterIn = "in_%i.txt" % (unit)
+		fileNameWaterIn = sysPath + "in_%i.txt" % (unit)
 		if os.path.isfile(fileNameWaterIn):
 			# Then read last value
 			with open(fileNameWaterIn) as fileWaterIn:
@@ -371,7 +373,7 @@ class water:
 	
 		# Water PUMP_CHILI_TOP
 		actualWaterIn = self.waterIn(nextAmount)
-		fileNameActualWaterIn = "a_%i.txt" % (unit)
+		fileNameActualWaterIn = sysPath + "a_%i.txt" % (unit)
 		with open(fileNameActualWaterIn, "a") as fileActualWaterIn:
 			textActualWaterIn = ss+" %i \n" % (actualWaterIn)
 			fileActualWaterIn.write(textActualWaterIn)
@@ -381,7 +383,7 @@ class water:
 		sum = self.waterOut()
 	
 		# Log waterOut
-		fileNameWaterOut = "out_%i.txt" % (unit)
+		fileNameWaterOut = sysPath + "out_%i.txt" % (unit)
 		with open(fileNameWaterOut, "a") as nextAmountFile:
 			amountText = ""+ss+" Amount: %i\n" % (sum)
 			nextAmountFile.write(amountText)
